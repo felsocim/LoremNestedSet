@@ -99,6 +99,19 @@ void show_tree(Node * tree) {
 	}
 }
 
+void destroy_tree(Node * tree) {
+	if(tree == NULL) {
+		return;
+	}
+	
+	unsigned short int i = 0;
+	
+	for(i = 0; i < tree->ch_length; i++) {
+		show_tree(tree->children[i]);
+		free(tree->children[i]);
+	}
+}
+
 void die(char * message) {
 	if(message != NULL && strlen(message) > 0) {
 		fprintf(stderr, "%s\n", message);

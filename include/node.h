@@ -29,6 +29,7 @@ typedef struct s_node {
 Node * new_node(unsigned short int identifier);
 Node * append_child(Node * node, Node * parent);
 Node * generate_tree(Node * tree, unsigned short int level, unsigned short previous_count, unsigned short int max_level, unsigned short int max_nodes_per_level);
+void destroy_tree(Node * tree);
 
 void show_tree(Node * tree);
 void die(char * message);
