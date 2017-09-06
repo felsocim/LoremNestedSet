@@ -1,0 +1,8 @@
+# Compiler-realted files
+obj/* 
+
+# Memory stack dumps
+*.stackdump
+
+# Executables
+bin/*
