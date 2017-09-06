@@ -62,8 +62,6 @@ Node * generate_tree(Node * tree, unsigned short int level, unsigned short previ
 	}
 	
 	unsigned short int random_count = ( rand() % (max_nodes_per_level + 1 - min_nodes_per_level) ) + min_nodes_per_level;
-	
-	printf("RANDOM VALUE: %d\n", random_count);
 	unsigned short int i = 0;
 	
 	if(tree == NULL) {
