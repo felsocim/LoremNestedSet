@@ -27,5 +27,6 @@ Node * build_tree(Node * tree, unsigned short int max_level, unsigned short int 
 void destroy_tree(Node * tree);
 void show_tree(Node * tree);
 void die(char * message);
+void export_to_sql(Node * tree, char * file); 
 
 #endif

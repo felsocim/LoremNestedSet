@@ -125,3 +125,42 @@ void die(char * message) {
 	
 	exit(-1);
 }
+
+void export_to_sql(Node * tree, char * file) {
+	if(tree == NULL) {
+		die("Nothing to export. Tree is empty!");
+	}
+	
+	int fd;
+	
+	if((fd = open(file, O_WRONLY | O_CREAT | O_TRUNC)) < 0) {
+		perror("SQL Export");
+		die("Unable to create target file!");
+	}
+	
+	size_t total = 0, current = 0;
+	char * line = (char *) malloc(1024 * sizeof(char));
+	Node * temp = tree;
+	
+	while(temp != NULL) {
+		if(sprintf(line, "INSERT INTO mock_table (`left`, `right`, `level`) VALUES (%d, %d, %d);\n", temp->left_bound, temp->right_bound, temp->level) < 1) {
+			die("Error while writing into target file!");
+		}
+		
+		if((current = write(fd, line, strlen(line))) < 0) {
+			perror("SQL Export");
+			die("Error while writing into target file!");
+		}
+		total += current;		
+		
+		temp = temp->next;
+	}
+	
+	free(line);
+	
+	close(fd);
+	
+	printf("Success! (size: %d %s)\n", (total > 1024 ? total / 1024 : total), (total > 1024 ? "kB" : "B"));
+	
+	return; 
+} 

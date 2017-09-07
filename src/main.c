@@ -28,9 +28,11 @@ int main(int argc, char ** argv) {
 		}
 	}
 	
-	Node * tree = generate_tree(NULL, 0, 0, max_level, max_nodes_per_level);
+	Node * tree = build_tree(NULL, max_level, max_nodes_per_level);
 	
 	show_tree(tree);
+	
+	export_to_sql(tree, "export.sql");
 	
 	destroy_tree(tree);
 	
