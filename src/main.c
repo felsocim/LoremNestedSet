@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
+#include "../include/shared.h"
 #include "../include/node.h"
 #include "../include/lorem.h"
 
