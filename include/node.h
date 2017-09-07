@@ -11,11 +11,6 @@
 #define INITIAL_NODE_LIST_SIZE 10
 #define LENGTH(array) ( sizeof(array) / sizeof(array[0]) )
 
-typedef enum {
-	FALSE,
-	TRUE
-} Bool;
-
 typedef struct s_node {
 	unsigned short int left_bound;
 	unsigned short int right_bound;
