@@ -58,13 +58,13 @@ Node * append_child(unsigned int level, Node * parent, Node * tree) {
 	return tree;
 }	
 				
-Node * generate_level(Node * tree, unsigned short int level, unsigned short int max_nodes_per_level) {		
+Node * generate_level(Node * tree, unsigned short int level, unsigned short int min_nodes_per_level, unsigned short int max_nodes_per_level) {		
 	if(level == 0 || tree == NULL) {
 		return append_child(0, NULL, tree);
 	}
 	
 	unsigned short int i = 0;
-	unsigned short int random_count = rand() % max_nodes_per_level;
+	unsigned short int random_count = ( rand() % (max_nodes_per_level - min_nodes_per_level + 1) ) + min_nodes_per_level;
 	
 	Node * temp = tree;
 	
@@ -80,11 +80,11 @@ Node * generate_level(Node * tree, unsigned short int level, unsigned short int 
 	return tree;
 }	
 
-Node * build_tree(Node * tree, unsigned short int max_level, unsigned short int max_nodes_per_level) {
+Node * build_tree(Node * tree, unsigned short int max_level, unsigned short int min_nodes_per_level, unsigned short int max_nodes_per_level) {
 	unsigned short int i = 0;
 	
 	for(i = 0; i < max_level; i++) {
-		tree = generate_level(tree, i, max_nodes_per_level);
+		tree = generate_level(tree, i, min_nodes_per_level, max_nodes_per_level);
 	}
 	
 	return tree;

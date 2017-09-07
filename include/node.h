@@ -20,8 +20,8 @@ typedef struct s_node {
 
 Node * new_node();
 Node * append_child(unsigned int level, Node * parent, Node * tree);
-Node * generate_level(Node * tree, unsigned short int level, unsigned short int max_nodes_per_level);
-Node * build_tree(Node * tree, unsigned short int max_level, unsigned short int max_nodes_per_level);
+Node * generate_level(Node * tree, unsigned short int level, unsigned short int min_nodes_per_level, unsigned short int max_nodes_per_level);
+Node * build_tree(Node * tree, unsigned short int max_level, unsigned short int min_nodes_per_level, unsigned short int max_nodes_per_level);
 
 void destroy_tree(Node * tree);
 void show_tree(Node * tree);

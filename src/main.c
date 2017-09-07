@@ -93,7 +93,7 @@ int main(int argc, char ** argv) {
 		}
 	}
 	
-	Node * tree = build_tree(NULL, max_level, max_nodes_per_level);
+	Node * tree = build_tree(NULL, max_level, min_nodes_per_level, max_nodes_per_level);
 	
 	show_tree(tree);
 	
