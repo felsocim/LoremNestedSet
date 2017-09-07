@@ -9,7 +9,6 @@
 #include <stdlib.h>
 
 #define INITIAL_NODE_LIST_SIZE 10
-#define LENGTH(array) ( sizeof(array) / sizeof(array[0]) )
 
 typedef struct s_node {
 	unsigned short int left_bound;
