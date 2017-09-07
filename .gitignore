@@ -6,3 +6,6 @@ obj/*
 
 # Executables
 bin/*
+
+# Data export
+*.sql
