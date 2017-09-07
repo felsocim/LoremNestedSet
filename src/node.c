@@ -1,13 +1,14 @@
 #include "../include/node.h"
 
-Node * new_node(unsigned short int identifier) {
+Node * new_node() {
 	Node * node = (Node *) malloc(sizeof(Node));
 	
 	if(node != 0) {
-		node->identifier = identifier;
-		node->ch_size = 0;
-		node->ch_length = 0;
-		node->children = NULL;
+		node->left_bound = 1;
+		node->right_bound = 2;
+		node->parent = NULL;
+		node->next = NULL;
+		
 		return node;
 	}
 	
@@ -16,86 +17,88 @@ Node * new_node(unsigned short int identifier) {
 	return NULL;
 }	
 
-Node * append_child(Node * node, Node * parent) {
-	if(node == NULL || parent == NULL) {
-		die("Node or parent null!\n");
+Node * append_child(unsigned int level, Node * parent, Node * tree) {	
+	if(tree == NULL || parent == NULL) {
+		Node * created = new_node();
+		created->level = level;	
+		
+		return created;
 	}
 	
-	if(parent->children == NULL) {
-		parent->children = (Node **) malloc(INITIAL_NODE_LIST_SIZE * sizeof(Node*));
-		if(parent->children != 0) {
-			parent->children[0] = node;
-			parent->ch_size = INITIAL_NODE_LIST_SIZE;
-			parent->ch_length = 1;
-			return parent;
+	Node * temp = tree;
+	unsigned short int p_right = parent->right_bound;
+	
+	while(temp != NULL) {
+		if(temp->right_bound >= p_right) {
+			temp->right_bound += 2;
 		}
-		die("Unable to allocate empty node list!");
+		
+		temp = temp->next;
 	}
 	
-	if(parent->ch_size == parent->ch_length) {
-		parent->children = realloc(parent->children, (parent->ch_length + 1) * sizeof(Node *));
-		if(parent->children != 0) {
-			parent->children[parent->ch_length] = node;
-			parent->ch_size += 1;
-			parent->ch_length += 1;
-			return parent;
+	temp = tree;
+	Node * last = NULL;
+	
+	while(temp != NULL) {
+		if(temp->left_bound >= p_right) {
+			temp->left_bound += 2;
 		}
-		die("Unable to reallocate full node list!");
+		if(temp->next == NULL) {
+			last = temp;
+		}
+		temp = temp->next;
 	}
 	
-	parent->children[parent->ch_length] = node;
-	parent->ch_length += 1;
+	last->next = new_node();
+	last->next->left_bound = p_right;
+	last->next->right_bound = p_right + 1;
+	last->next->parent = parent;
+	last->next->level = level;
 	
-	return parent;
-}
-	
+	return tree;
+}	
 				
-Node * generate_tree(Node * tree, unsigned short int level, unsigned short previous_count, unsigned short int max_level, unsigned short int max_nodes_per_level) {
-	if(level == max_level) {
-		return tree;
+Node * generate_level(Node * tree, unsigned short int level, unsigned short int max_nodes_per_level) {		
+	if(level == 0 || tree == NULL) {
+		return append_child(0, NULL, tree);
 	}
 	
-	unsigned short min_nodes_per_level = 1;
-	
-	if(previous_count > 1 ) {
-		min_nodes_per_level = previous_count;
-	}
-	
-	unsigned short int random_count = ( rand() % (max_nodes_per_level + 1 - min_nodes_per_level) ) + min_nodes_per_level;
 	unsigned short int i = 0;
+	unsigned short int random_count = rand() % max_nodes_per_level;
 	
-	if(tree == NULL) {
-		tree = new_node(previous_count);
-	} else {
-		tree->identifier = previous_count;
-	}
+	Node * temp = tree;
 	
-	tree->level = level;
-	
-	for(i = 0; i < random_count; i++) {
-		Node * child = new_node(previous_count + i);
-		child->level = level + 1;
-		tree = append_child(child, tree);
-	}
-	
-	for(i = 0; i < tree->ch_length; i++) {
-		generate_tree(tree->children[i], level + 1, random_count, max_level, max_nodes_per_level);
+	while(temp != NULL) {
+		if(temp->level == level - 1) {
+			for(i = 0; i < random_count; i++) {
+				tree = append_child(level, temp, tree);
+			}
+		}
+		temp = temp->next;
 	}
 	
 	return tree;
 }	
 
-void show_tree(Node * tree) {
+Node * build_tree(Node * tree, unsigned short int max_level, unsigned short int max_nodes_per_level) {
 	unsigned short int i = 0;
 	
-	for(i = 0; i < tree->level; i++) {
-		printf("\t");
+	for(i = 0; i < max_level; i++) {
+		tree = generate_level(tree, i, max_nodes_per_level);
 	}
 	
-	printf("[%d] Lorem ipsum dolor sit amet.\n", tree->level);	
+	return tree;
+}
+
+void show_tree(Node * tree) {
+	if(tree == NULL) {
+		printf("Empty tree.\n");
+	}
 	
-	for(i = 0; i < tree->ch_length; i++) {
-		show_tree(tree->children[i]);
+	Node * temp = tree;
+	while(temp != NULL) {
+		printf("[%d, %d, %d]\n", temp->left_bound, temp->right_bound, temp->level);
+		temp = temp->next;
 	}
 }
 
@@ -104,12 +107,15 @@ void destroy_tree(Node * tree) {
 		return;
 	}
 	
-	unsigned short int i = 0;
+	Node * temp = tree;
 	
-	for(i = 0; i < tree->ch_length; i++) {
-		show_tree(tree->children[i]);
-		free(tree->children[i]);
+	while(temp != NULL) {
+		Node * current = temp;
+		temp = temp->next;
+		free(current);
 	}
+	
+	return;		
 }
 
 void die(char * message) {

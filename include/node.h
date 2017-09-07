@@ -17,20 +17,19 @@ typedef enum {
 } Bool;
 
 typedef struct s_node {
-	unsigned short int identifier;
 	unsigned short int left_bound;
 	unsigned short int right_bound;
 	unsigned short int level;
-	unsigned short int ch_size;
-	unsigned short int ch_length;
-	struct s_node ** children;
+	struct s_node * parent;
+	struct s_node * next;
 } Node;
 
-Node * new_node(unsigned short int identifier);
-Node * append_child(Node * node, Node * parent);
-Node * generate_tree(Node * tree, unsigned short int level, unsigned short previous_count, unsigned short int max_level, unsigned short int max_nodes_per_level);
-void destroy_tree(Node * tree);
+Node * new_node();
+Node * append_child(unsigned int level, Node * parent, Node * tree);
+Node * generate_level(Node * tree, unsigned short int level, unsigned short int max_nodes_per_level);
+Node * build_tree(Node * tree, unsigned short int max_level, unsigned short int max_nodes_per_level);
 
+void destroy_tree(Node * tree);
 void show_tree(Node * tree);
 void die(char * message);
 
