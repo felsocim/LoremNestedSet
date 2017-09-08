@@ -14,7 +14,9 @@ The application needs to be built before use. To obtain the appropriate executab
 
 If you are working under Linux, you may have already installed GCC compiler. If not, you can do so by executing the following command in terminal:
 
-``sudo apt-get install build-essential``
+```bash
+sudo apt-get install build-essential
+```
 
 #### Windows users
 
@@ -28,7 +30,9 @@ Once the GCC compiler installed, you can build an executable using ``make`` comm
 
 To run Lorem Nested Set from the command line use the following sytax:
 
-``lnt -o <output SQL script file> \[-d, -m, -M, -t, -l, -r, -v, -L, -h\]``
+```bash
+lnt -o <output SQL script file> \[-d, -m, -M, -t, -l, -r, -v, -L, -h\]
+```
 	
 The application defaults are set to following values:
 * structure depth:					3 levels
@@ -57,7 +61,6 @@ The above parameters can be modified by using available options:
 **Example of application execution**
 
 ![Example of application execution](https://preview.ibb.co/jMKeDa/LNSEx.png)
-<<<<<<< HEAD
 
 **Extract of application output**
 
@@ -83,6 +86,17 @@ INSERT INTO mock_table (`left`, `right`, `level`) VALUES (75, 84, 2);
 INSERT INTO mock_table (`left`, `right`, `level`) VALUES (87, 96, 2);
 INSERT INTO mock_table (`left`, `right`, `level`) VALUES (97, 106, 2);
 INSERT INTO mock_table (`left`, `right`, `level`) VALUES (107, 116, 2);
+...
 ```
-=======
->>>>>>> b9a791be16fd4a0c5cb6c2f7a531219bc80f8bd8
+
+## Authors
+
+* Marek Felsoci - *Student* - [University of Strasbourg](https://www.unistra.fr)
+
+## License
+
+Lorem Nested Set application is licensed under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Credits
+
+* Nested set database model example image by [Nestedsetmodel.jpg: Sherahmderivative work: 0x24a537r9 (talk) - Nestedsetmodel.jpg, Public Domain](https://commons.wikimedia.org/w/index.php?curid=10979293)
