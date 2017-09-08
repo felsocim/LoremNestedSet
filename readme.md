@@ -11,11 +11,11 @@ The application needs to be built before use. To obtain the appropriate executab
 #### Linux users
 
 If you are working under Linux, you may have already installed GCC compiler. If not, you can do so by executing the following command in terminal:
-	sudo apt-get install build-essential
+``sudo apt-get install build-essential``
 
 #### Windows users
 
-Windows does not have a native GCC support but you can use a Unix-like environment such as Cygwin or MinGW with gcc and make packages installed.
+Windows does not have a native GCC support but you can use a Unix-like environment such as Cygwin or MinGW with **gcc** and **make** packages installed.
 
 ### Build
 
@@ -24,7 +24,7 @@ Once the GCC compiler installed, you can build an executable using ``make`` comm
 ## Usage
 
 To run Lorem Nested Set from the command line use the following sytax:
-	lnt -o <output SQL script file> \[-d, -m, -M, -t, -l, -r, -v, -L, -h\]
+``lnt -o <output SQL script file> \[-d, -m, -M, -t, -l, -r, -v, -L, -h\]``
 	
 The application defaults are set to following values:
 * structure depth:					3 levels
@@ -36,6 +36,7 @@ The application defaults are set to following values:
 * by default level column is not included in output script
 
 The above parameters can be modified by using available options:
+
 | Option | Descirption |
 | ------ | ----------- |
 | -o | specifies output script file (mandatory) |
