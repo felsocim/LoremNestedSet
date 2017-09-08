@@ -83,10 +83,13 @@ Node * generate_level(Node * tree, unsigned short int level, unsigned short int 
 Node * build_tree(Node * tree, unsigned short int max_level, unsigned short int min_nodes_per_level, unsigned short int max_nodes_per_level) {
 	unsigned short int i = 0;
 	
+	printf("Building tree... ");
+	
 	for(i = 0; i < max_level; i++) {
 		tree = generate_level(tree, i, min_nodes_per_level, max_nodes_per_level);
 	}
 	
+	printf("Success\n");
 	
 	return tree;
 }
@@ -112,6 +115,7 @@ void export_to_sql(Node * tree, struct s_sqlparams params) {
 	
 	int fd;
 	
+	printf("Generating SQL statements... ");
 	
 	if((fd = open(params.output_file, O_WRONLY | O_CREAT | O_TRUNC)) < 0) {
 		perror("SQL Export");
@@ -147,7 +151,5 @@ void export_to_sql(Node * tree, struct s_sqlparams params) {
 	
 	close(fd);
 	
-	printf("Success! (size: %d %s)\n", (total > 1024 ? total / 1024 : total), (total > 1024 ? "kB" : "B"));
-	
-	return; 
+	printf("Success [output: %s (%d %s)]\n", params.output_file, (total > 1024 ? total / 1024 : total), (total > 1024 ? "kB" : "B"));
 } 
