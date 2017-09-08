@@ -18,7 +18,7 @@ If you are working under Linux, you may have already installed GCC compiler. If 
 
 #### Windows users
 
-Windows does not have a native GCC support but you can use a Unix-like environment such as Cygwin or MinGW with **gcc** and **make** packages installed.
+Windows does not have a native GCC support but you can use a Unix-like environment such as [Cygwin](https://www.cygwin.com) or [MinGW](www.mingw.org) with **gcc** and **make** packages installed.
 
 ### Build
 
@@ -53,3 +53,7 @@ The above parameters can be modified by using available options:
 | -v | export also level column with its default name (not associable with -L option) |
 | -L | custom name (without quotes or \`) for level column (not associable with -v option) |
 | -h | displays this text |
+
+**Example of application execution**
+
+![Example of application execution](https://preview.ibb.co/jMKeDa/LNSEx.png)
