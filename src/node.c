@@ -87,19 +87,8 @@ Node * build_tree(Node * tree, unsigned short int max_level, unsigned short int 
 		tree = generate_level(tree, i, min_nodes_per_level, max_nodes_per_level);
 	}
 	
-	return tree;
-}
-
-void show_tree(Node * tree) {
-	if(tree == NULL) {
-		printf("Empty tree.\n");
-	}
 	
-	Node * temp = tree;
-	while(temp != NULL) {
-		printf("[%d, %d, %d]\n", temp->left_bound, temp->right_bound, temp->level);
-		temp = temp->next;
-	}
+	return tree;
 }
 
 void destroy_tree(Node * tree) {
@@ -113,27 +102,18 @@ void destroy_tree(Node * tree) {
 		Node * current = temp;
 		temp = temp->next;
 		free(current);
-	}
-	
-	return;		
+	}	
 }
 
-void die(char * message) {
-	if(message != NULL && strlen(message) > 0) {
-		fprintf(stderr, "%s\n", message);
-	}
-	
-	exit(-1);
-}
-
-void export_to_sql(Node * tree, char * file) {
+void export_to_sql(Node * tree, struct s_sqlparams params) {
 	if(tree == NULL) {
 		die("Nothing to export. Tree is empty!");
 	}
 	
 	int fd;
 	
-	if((fd = open(file, O_WRONLY | O_CREAT | O_TRUNC)) < 0) {
+	
+	if((fd = open(params.output_file, O_WRONLY | O_CREAT | O_TRUNC)) < 0) {
 		perror("SQL Export");
 		die("Unable to create target file!");
 	}
@@ -142,16 +122,23 @@ void export_to_sql(Node * tree, char * file) {
 	char * line = (char *) malloc(1024 * sizeof(char));
 	Node * temp = tree;
 	
-	while(temp != NULL) {
-		if(sprintf(line, "INSERT INTO mock_table (`left`, `right`, `level`) VALUES (%d, %d, %d);\n", temp->left_bound, temp->right_bound, temp->level) < 1) {
-			die("Error while writing into target file!");
+	while(temp != NULL) {		
+		if(params.export_level_column) {
+			if(sprintf(line, "INSERT INTO %s (`%s`, `%s`, `%s`) VALUES (%d, %d, %d);\n", params.table, params.left_bound_column, params.right_bound_column, params.level_column, temp->left_bound, temp->right_bound, temp->level) < 1) {
+				die("Error while writing into target file!");
+			}
+		} else {
+			if(sprintf(line, "INSERT INTO %s (`%s`, `%s`) VALUES (%d, %d);\n", params.table, params.left_bound_column, params.right_bound_column, temp->left_bound, temp->right_bound) < 1) {
+				die("Error while writing into target file!");
+			}
 		}
 		
 		if((current = write(fd, line, strlen(line))) < 0) {
 			perror("SQL Export");
 			die("Error while writing into target file!");
 		}
-		total += current;		
+		
+		total += current;	
 		
 		temp = temp->next;
 	}

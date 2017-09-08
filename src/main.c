@@ -12,18 +12,15 @@ int main(int argc, char ** argv) {
 	
 	int c;
 	
-	unsigned short int max_level = 0;
-	unsigned short int min_nodes_per_level = 0;
-	unsigned short int max_nodes_per_level = 0;
-	char * table_name = (char *) malloc(SQL_IDENTIFIER_NAME_MAX_LENGTH * sizeof(char));
-	char * left_bound_column_name = (char *) malloc(SQL_IDENTIFIER_NAME_MAX_LENGTH * sizeof(char));
-	char * right_bound_column_name = (char *) malloc(SQL_IDENTIFIER_NAME_MAX_LENGTH * sizeof(char));
-	char * level_column_name = (char *) malloc(SQL_IDENTIFIER_NAME_MAX_LENGTH * sizeof(char));
-	char * output_file_name = (char *) malloc(NAME_MAX * sizeof(char));
-	Bool default_level_column = False;
-	Bool verbose_execution = False;
+	unsigned short int max_level = DEFAULT_STRUCTURE_DEPTH;
+	unsigned short int min_nodes_per_level = DEFAULT_MINIMUM_NODES_PER_LEVEL;
+	unsigned short int max_nodes_per_level = DEFAULT_MAXIMUM_NODES_PER_LEVEL;
 	
-	while( (c = getopt(argc, argv, "d:m:M:t:l:r:vL:o:Vh")) != -1 ) {
+	struct s_sqlparams params = new_params();
+	
+	Bool output_file_set = False;
+	
+	while( (c = getopt(argc, argv, "d:m:M:t:l:r:vL:o:h")) != -1 ) {
 		switch(c) {
 			case 'd':
 				max_level = atoi(optarg);
@@ -36,50 +33,43 @@ int main(int argc, char ** argv) {
 				break;
 			case 't':
 				if(strlen(optarg) <= SQL_IDENTIFIER_NAME_MAX_LENGTH) {
-					memset(table_name, '\0', SQL_IDENTIFIER_NAME_MAX_LENGTH);
-					strcpy(table_name, optarg);
+					strcpy(params.table, optarg);
 				} else {
 					die("Argument parsing failed: Table name must not exceed 64 characters!");
 				}
 				break;
 			case 'l':
 				if(strlen(optarg) <= SQL_IDENTIFIER_NAME_MAX_LENGTH) {
-					memset(left_bound_column_name, '\0', SQL_IDENTIFIER_NAME_MAX_LENGTH);
-					strcpy(left_bound_column_name, optarg);
+					strcpy(params.left_bound_column, optarg);
 				} else {
 					die("Argument parsing failed: Left bound column name must not exceed 64 characters!");
 				}
 				break;
 			case 'r':
 				if(strlen(optarg) <= SQL_IDENTIFIER_NAME_MAX_LENGTH) {
-					memset(right_bound_column_name, '\0', SQL_IDENTIFIER_NAME_MAX_LENGTH);
-					strcpy(right_bound_column_name, optarg);
+					strcpy(params.right_bound_column, optarg);
 				} else {
 					die("Argument parsing failed: Right bound column name must not exceed 64 characters!");
 				}
 				break;
 			case 'v':
-				default_level_column = True;
+				params.export_level_column = True;
 				break;
 			case 'L':
 				if(strlen(optarg) <= SQL_IDENTIFIER_NAME_MAX_LENGTH) {
-					memset(level_column_name, '\0', SQL_IDENTIFIER_NAME_MAX_LENGTH);
-					strcpy(level_column_name, optarg);
-					default_level_column = False;
+					strcpy(params.level_column, optarg);
+					params.export_level_column = True;
 				} else {
 					die("Argument parsing failed: Level column name must not exceed 64 characters!");
 				}
 				break;
 			case 'o':
 				if(strlen(optarg) <= NAME_MAX) {
-					memset(output_file_name, '\0', NAME_MAX);
-					strcpy(output_file_name, optarg);
+					strcpy(params.output_file, optarg);
+					output_file_set = True;
 				} else {
 					die("Argument parsing failed: Output file name exceeds maximum length allowed by your operating system and/or file system!");
 				}
-				break;
-			case 'V':
-				verbose_execution = True;
 				break;
 			case 'h':
 				printf("LoremNestedTree 1.0 created by Marek Felsoci. For more information visit: http://www.marekonline.eu.\nUsage: lnt -d, [-m, -M, -t, -r , -l, -v, -L, -V, -h]\n");
@@ -93,16 +83,22 @@ int main(int argc, char ** argv) {
 		}
 	}
 	
-	Node * tree = build_tree(NULL, max_level, min_nodes_per_level, max_nodes_per_level);
+	if(!output_file_set) {
+		die("Failure: No output file specified!");
+	}
+	
 	
 	show_tree(tree);
 	
-	export_to_sql(tree, "export.sql");
+	printf("\n");
+	
+	Node * tree = build_tree(NULL, max_level, min_nodes_per_level, max_nodes_per_level);
+	export_to_sql(tree, params);
+	
 	
 	destroy_tree(tree);
+	destroy_params(params);
 	
-	if(verbose_execution || default_level_column) {
-	}
 	
 	return 0;
 }
