@@ -18,7 +18,7 @@ If you are working under Linux, you may have already installed GCC compiler. If 
 
 #### Windows users
 
-Windows does not have a native GCC support but you can use a Unix-like environment such as Cygwin or MinGW with **gcc** and **make** packages installed.
+Windows does not have a native GCC support but you can use a Unix-like environment such as [Cygwin](https://www.cygwin.com) or [MinGW](www.mingw.org) with **gcc** and **make** packages installed.
 
 ### Build
 
@@ -53,3 +53,33 @@ The above parameters can be modified by using available options:
 | -v | export also level column with its default name (not associable with -L option) |
 | -L | custom name (without quotes or \`) for level column (not associable with -v option) |
 | -h | displays this text |
+
+**Example of application execution**
+
+![Example of application execution](https://preview.ibb.co/jMKeDa/LNSEx.png)
+
+**Extract of application output**
+
+``export.sql``
+
+```sql
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (1, 296, 0);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (2, 43, 1);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (44, 85, 1);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (86, 127, 1);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (128, 169, 1);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (170, 211, 1);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (212, 253, 1);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (254, 295, 1);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (3, 12, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (13, 22, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (23, 32, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (33, 42, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (45, 54, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (55, 64, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (65, 74, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (75, 84, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (87, 96, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (97, 106, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (107, 116, 2);
+```
