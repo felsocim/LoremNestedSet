@@ -57,6 +57,7 @@ The above parameters can be modified by using available options:
 **Example of application execution**
 
 ![Example of application execution](https://preview.ibb.co/jMKeDa/LNSEx.png)
+<<<<<<< HEAD
 
 **Extract of application output**
 
@@ -83,3 +84,5 @@ INSERT INTO mock_table (`left`, `right`, `level`) VALUES (87, 96, 2);
 INSERT INTO mock_table (`left`, `right`, `level`) VALUES (97, 106, 2);
 INSERT INTO mock_table (`left`, `right`, `level`) VALUES (107, 116, 2);
 ```
+=======
+>>>>>>> b9a791be16fd4a0c5cb6c2f7a531219bc80f8bd8
