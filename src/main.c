@@ -5,19 +5,9 @@
 #include <limits.h>
 #include "../include/shared.h"
 #include "../include/node.h"
-#include "../include/lorem.h"
 
 int main(int argc, char ** argv) {
 	srand((unsigned int)time(NULL));
-	
-	 printf(" _                              _   _           _           _ _______            \n");
-	 printf("| |                            | \\ | |         | |         | |__   __|           \n");
-	 printf("| |     ___  _ __ ___ _ __ ___ |  \\| | ___  ___| |_ ___  __| |  | |_ __ ___  ___ \n");
-	 printf("| |    / _ \\| '__/ _ \\ '_ ` _ \\| . ` |/ _ \\/ __| __/ _ \\/ _` |  | | '__/ _ \\/ _ \\\n");
-	 printf("| |___| (_) | | |  __/ | | | | | |\\  |  __/\\__ \\ ||  __/ (_| |  | | | |  __/  __/\n");
-	 printf("|______\\___/|_|  \\___|_| |_| |_|_| \\_|\\___||___/\\__\\___|\\__,_|  |_|_|  \\___|\\___|\n");
-	 
-	 printf("Version: 1.0\nDeveloped by: Marek Felsoci\nFor more information and updates, please, visit: https://github.com/felsocim/LoremNestedTree\n");
 	
 	int c;
 	
@@ -81,11 +71,25 @@ int main(int argc, char ** argv) {
 				}
 				break;
 			case 'h':
-				printf("LoremNestedTree 1.0 created by Marek Felsoci. For more information visit: http://www.marekonline.eu.\nUsage: lnt -d, [-m, -M, -t, -r , -l, -v, -L, -V, -h]\n");
+				printf("Usage: lnt -o OUTPUT [-d, -m, -M, -t, -l, -r, -v, -L, -h]\n");
+				printf("Allows to build a mock nested tree data strcture for database testing purposes.\nExports the resulting structure into a SQL script containing necessary insert statements.\n\n");
+				printf("Mandatory option:\n  -o\tspecifies output script file\n");
+				printf("Other options:\n");
+				printf("  -d\tdepth of data structure (number of levels)\n");
+				printf("  -m\tminimum nodes count per level (default value: 1)\n");
+				printf("  -M\tmaximum nodes count per level (default value: 5)\n");
+				printf("  -t\tcustom name (without quotes or `) for target SQL table (default value: 'mock_table')\n");
+				printf("  -l\tcustom name (without quotes or `) for left boundary column (default value: 'left')\n");
+				printf("  -r\tcustom name (without quotes or `) for right boundary column (default value: 'right')\n");
+				printf("  -v\texport also level column with its default name (not associable with -L option)\n");
+				printf("  -L\tcustom name (without quotes or `) for level column (not associable with -v option)\n");
+				printf("  -h\tdisplays this text\n\n");
+				printf("Full documentation and application information can be found at: https://github.com/felsocim/LoremNestedTree\nLicensed under the terms of MIT software license: https://opensource.org/licenses/MIT\n");
+				printf("Copyright (c) 2017 Marek Felsoci\n");
 				exit(0);
 				break;				
 			case '?':
-				die("Argument(s) mismatch!\nUsage: lorem [-d] structure depth in levels [-m] maximum nodes count per structure level");
+				die("Argument(s) mismatch!\nUsage: lnt -o OUTPUT [-d, -m, -M, -t, -l, -r, -v, -L, -h]\nUse -h option to display help.");
 				break;
 			default:
 				exit(0);
@@ -95,6 +99,15 @@ int main(int argc, char ** argv) {
 	if(!output_file_set) {
 		die("Failure: No output file specified!");
 	}
+	
+	printf(" _                              _   _           _           _ _______            \n");
+	printf("| |                            | \\ | |         | |         | |__   __|           \n");
+	printf("| |     ___  _ __ ___ _ __ ___ |  \\| | ___  ___| |_ ___  __| |  | |_ __ ___  ___ \n");
+	printf("| |    / _ \\| '__/ _ \\ '_ ` _ \\| . ` |/ _ \\/ __| __/ _ \\/ _` |  | | '__/ _ \\/ _ \\\n");
+	printf("| |___| (_) | | |  __/ | | | | | |\\  |  __/\\__ \\ ||  __/ (_| |  | | | |  __/  __/\n");
+	printf("|______\\___/|_|  \\___|_| |_| |_|_| \\_|\\___||___/\\__\\___|\\__,_|  |_|_|  \\___|\\___|\n");
+	
+	printf("Version: 1.0\nDeveloped by: Marek Felsoci\nFor more information and updates, please, visit: https://github.com/felsocim/LoremNestedTree\nTo display help, run with -h option.\n\n");
 	
 	printf("\nP a r a m e t e r s:\n");
 	printf("Structure depth: %d levels\n", max_level);

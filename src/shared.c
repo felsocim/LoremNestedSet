@@ -60,7 +60,7 @@ void destroy_params(struct s_sqlparams params) {
 
 void die(char * message) {
 	if(message != NULL && strlen(message) > 0) {
-		fprintf(stderr, "%s\n", message);
+		fprintf(stderr, "Failure: %s\n", message);
 	}
 	
 	exit(-1);
