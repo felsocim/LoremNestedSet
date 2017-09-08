@@ -1,6 +1,6 @@
 # Lorem Nested Set
 
-Simple console application allowing to generate mock nested set data strcutures for SQL-based databases development and testing purposes. Lorem Nested Set generates a mock nested set data strcuture according to optional user preferences and exports it as a SQL script containing appropriate data insertion statements. The latter is fully configurable and can be used to build a mock nested set data structure within an SQL-based database.
+Simple console application allowing to generate mock nested set data strcutures for SQL-based databases development and testing purposes. Lorem Nested Set generates a mock nested set data strcuture according to optional user preferences and exports it as a SQL script containing appropriate data insertion statements. The latter is fully configurable and can be used to build a mock nested set data structure within an SQL-based database. 
 
 ![Nested set database model example](https://image.ibb.co/bU5mta/Nested_Set_Model_Ex.png)
 
