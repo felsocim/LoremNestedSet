@@ -13,6 +13,7 @@ The application needs to be built before use. To obtain the appropriate executab
 #### Linux users
 
 If you are working under Linux, you may have already installed GCC compiler. If not, you can do so by executing the following command in terminal:
+
 ``sudo apt-get install build-essential``
 
 #### Windows users
@@ -26,6 +27,7 @@ Once the GCC compiler installed, you can build an executable using ``make`` comm
 ## Usage
 
 To run Lorem Nested Set from the command line use the following sytax:
+
 ``lnt -o <output SQL script file> \[-d, -m, -M, -t, -l, -r, -v, -L, -h\]``
 	
 The application defaults are set to following values:
