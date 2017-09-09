@@ -60,32 +60,32 @@ The above parameters can be modified by using available options:
 
 **Example of application execution**
 
-![Example of application execution](https://preview.ibb.co/jMKeDa/LNSEx.png)
+![Example of application execution](https://preview.ibb.co/bFDbbv/LNSExUpd.png)
 
 **Extract of application output**
 
 ``export.sql``
 
 ```sql
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (1, 296, 0);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (2, 43, 1);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (44, 85, 1);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (86, 127, 1);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (128, 169, 1);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (170, 211, 1);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (212, 253, 1);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (254, 295, 1);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (3, 12, 2);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (13, 22, 2);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (23, 32, 2);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (33, 42, 2);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (45, 54, 2);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (55, 64, 2);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (65, 74, 2);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (75, 84, 2);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (87, 96, 2);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (97, 106, 2);
-INSERT INTO mock_table (`left`, `right`, `level`) VALUES (107, 116, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (1, 104, 0);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (2, 35, 1);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (36, 69, 1);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (70, 103, 1);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (3, 10, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (11, 18, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (19, 26, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (27, 34, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (37, 44, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (45, 52, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (53, 60, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (61, 68, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (71, 78, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (79, 86, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (87, 94, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (95, 102, 2);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (4, 5, 3);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (6, 7, 3);
+INSERT INTO mock_table (`left`, `right`, `level`) VALUES (8, 9, 3);
 ...
 ```
 
