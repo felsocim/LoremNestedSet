@@ -1,6 +1,6 @@
 # Lorem Nested Set
 
-Simple console application allowing to generate mock nested set data strcutures for SQL-based databases development and testing purposes. Lorem Nested Set generates a mock nested set data strcuture according to optional user preferences and exports it as a SQL script containing appropriate data insertion statements. The latter is fully configurable and can be used to build a mock nested set data structure within an SQL-based database. 
+Simple console application allowing to generate mock nested set data strcutures for SQL-based databases development and testing purposes. **Lorem Nested Set** generates a mock nested set data strcuture according to optional user preferences and exports it as a SQL script containing appropriate data insertion statements. The latter is fully configurable and can be used to build a mock nested set data structure within an SQL-based database. 
 
 ![Nested set database model example](https://image.ibb.co/bU5mta/Nested_Set_Model_Ex.png)
 
@@ -47,15 +47,15 @@ The above parameters can be modified by using available options:
 
 | Option | Descirption |
 | ------ | ----------- |
-| -o | specifies output script file (mandatory) |
-| -d | depth of data structure (number of levels)
-| -m | minimum nodes count per level (default value: 1) |
-| -M | maximum nodes count per level (default value: 5) |
-| -t | custom name (without quotes or \`) for target SQL table (default value: 'mock_table') |
-| -l | custom name (without quotes or \`) for left boundary column (default value: 'left') |
-| -r | custom name (without quotes or \`) for right boundary column (default value: 'right') |
-| -v | export also level column with its default name (not associable with -L option) |
-| -L | custom name (without quotes or \`) for level column (not associable with -v option) |
+| -o | specifies output script file *(mandatory)* |
+| -d | depth of data structure *(number of levels)*
+| -m | minimum nodes count per level *(default value: 1)* |
+| -M | maximum nodes count per level *(default value: 5)* |
+| -t | custom name *(without quotes or \`)* for target SQL table *(default value: 'mock_table')* |
+| -l | custom name *(without quotes or \`)* for left boundary column *(default value: 'left')* |
+| -r | custom name *(without quotes or \`)* for right boundary column *(default value: 'right')* |
+| -v | export also level column with its default name *(not associable with -L option)* |
+| -L | custom name *(without quotes or \`)* for level column *(not associable with -v option)* |
 | -h | displays this text |
 
 **Example of application execution**
@@ -91,7 +91,7 @@ INSERT INTO mock_table (`left`, `right`, `level`) VALUES (107, 116, 2);
 
 ## Authors
 
-* Marek Felsoci - *Student* - [University of Strasbourg](https://www.unistra.fr)
+* [**Marek Felsoci**](http://www.marekonline.eu) - *Student* - [University of Strasbourg](https://www.unistra.fr)
 
 ## License
 
