@@ -9,8 +9,6 @@
 #include <stdlib.h>
 #include "shared.h"
 
-#define INITIAL_NODE_LIST_SIZE 10
-
 typedef struct s_node {
 	unsigned short int left_bound;
 	unsigned short int right_bound;
