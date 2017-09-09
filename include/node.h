@@ -1,3 +1,9 @@
+/**
+ * @file node.h
+ * @author Marek Felsoci
+ * @brief Defines nodes-related functions.
+ * @version 1.0
+ **/ 
 #ifndef __NODE_H
 #define __NODE_H
 
@@ -9,6 +15,7 @@
 #include <stdlib.h>
 #include "shared.h"
 
+// Nested set node data structure
 typedef struct s_node {
 	unsigned short int left_bound;
 	unsigned short int right_bound;

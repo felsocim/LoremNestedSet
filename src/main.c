@@ -1,3 +1,9 @@
+/**
+ * @file main.c
+ * @author Marek Felsoci
+ * @brief Contains main function.
+ * @version 1.0
+ **/ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -6,6 +12,9 @@
 #include "../include/shared.h"
 #include "../include/node.h"
 
+/**
+ * @brief Main function.
+ **/
 int main(int argc, char ** argv) {
 	srand((unsigned int)time(NULL));
 	

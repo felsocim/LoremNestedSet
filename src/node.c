@@ -1,5 +1,15 @@
+/**
+ * @file node.c
+ * @author Marek Felsoci
+ * @brief Implements nodes-related functions.
+ * @version 1.0
+ **/ 
 #include "../include/node.h"
 
+/**
+ * @brief Allocates a new node.
+ * @returns Node* Pointer to the newly allocated node (returns NULL on failure).
+ **/
 Node * new_node() {
 	Node * node = (Node *) malloc(sizeof(Node));
 	
@@ -17,6 +27,13 @@ Node * new_node() {
 	return NULL;
 }	
 
+/**
+ * @brief appends a new node to given data structure.
+ * @param 	unsigned short int	level 	New node's level.
+ * @param 	Node* 				parent	New node's parent.
+ * @param 	Node* 				tree	Target data structure.
+ * @returns	Node*						Updated data structure.
+ **/
 Node * append_child(unsigned short int level, Node * parent, Node * tree) {	
 	if(tree == NULL || parent == NULL) {
 		Node * created = new_node();
@@ -57,7 +74,15 @@ Node * append_child(unsigned short int level, Node * parent, Node * tree) {
 	
 	return tree;
 }	
-				
+
+/**
+ * @brief Generates mock nodes for given level in given data structure.
+ * @param Node*					tree				Target data structure.
+ * @param unsigned short int	level				Target level.
+ * @param unsigned short int	min_nodes_per_level	Minimum nodes count per level.
+ * @param unsigned short int	max_nodes_per_level	Maximum nodes count per level.	
+ * @returns Node*									Updated data structure.
+ **/		
 Node * generate_level(Node * tree, unsigned short int level, unsigned short int min_nodes_per_level, unsigned short int max_nodes_per_level) {		
 	if(level == 0 || tree == NULL) {
 		return append_child(0, NULL, tree);
@@ -80,6 +105,14 @@ Node * generate_level(Node * tree, unsigned short int level, unsigned short int 
 	return tree;
 }	
 
+/**
+ * @brief Builds the whole data structure by grouping all levels.
+ * @param Node*	tree	Target data structure.
+ * @param unsigned short int	max_level	Target data structure depth.
+ * @param unsigned short int	min_nodes_per_level	Minimum nodes count per level.
+ * @param unsigned short int	max_nodes_per_level	Maximum nodes count per level.	
+ * @returns Node*									Updated data structure.
+ **/
 Node * build_tree(Node * tree, unsigned short int max_level, unsigned short int min_nodes_per_level, unsigned short int max_nodes_per_level) {
 	unsigned short int i = 0;
 	
@@ -94,6 +127,11 @@ Node * build_tree(Node * tree, unsigned short int max_level, unsigned short int 
 	return tree;
 }
 
+/**
+ * @brief Deallocates an existing data structure.
+ * @param Node* tree Data structure to be deallocated.
+ * @returns void
+ **/
 void destroy_tree(Node * tree) {
 	if(tree == NULL) {
 		return;
@@ -108,6 +146,12 @@ void destroy_tree(Node * tree) {
 	}	
 }
 
+/**
+ * @brief Exports given data structure to a SQL script following specified parameters.
+ * @param Node*					tree	Data structure to be exported.
+ * @param struct s_sqlparams	params	Export parameters.
+ * @returns void
+ **/
 void export_to_sql(Node * tree, struct s_sqlparams params) {
 	if(tree == NULL) {
 		die("Nothing to export. Tree is empty!");

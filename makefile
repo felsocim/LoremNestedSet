@@ -1,3 +1,5 @@
+# Lorem Nested Set project's makefile
+# By Marek Felsoci.
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 RM = rm -f

@@ -1,5 +1,15 @@
+/**
+ * @file shared.c
+ * @author Marek Felsoci
+ * @brief Implements useful functions usable across the application.
+ * @version 1.0
+ **/ 
 #include "../include/shared.h"
 
+/**
+ * @brief Allocates a new export parameters.
+ * @returns struct s_sqlparams Export parameters.
+ **/ 
 struct s_sqlparams new_params() {
 	struct s_sqlparams params;
 	
@@ -26,6 +36,10 @@ struct s_sqlparams new_params() {
 	return params;
 }
 
+/**
+ * @brief Prints out an export paramters.
+ * @returns void
+ **/ 
 void print_params(struct s_sqlparams params) {
 	printf("Table name: `%s`\n", params.table);
 	printf("Left bound column name: `%s`\n", params.left_bound_column);
@@ -40,6 +54,11 @@ void print_params(struct s_sqlparams params) {
 	printf("Output file: %s\n", params.output_file);
 }
 
+/**
+ * @brief Deallocates an existing export parameters.
+ * @param struct s_sqlparams params Export parameters to be deallocated.
+ * @returns void
+ **/
 void destroy_params(struct s_sqlparams params) {
 	if(params.table != NULL) {
 		free(params.table);
@@ -58,6 +77,11 @@ void destroy_params(struct s_sqlparams params) {
 	}
 }
 
+/**
+ * @brief Prints a message on error output and terminates the application with exit code -1.
+ * @param char * message Message to be printed on error output.
+ * @return void
+ **/
 void die(char * message) {
 	if(message != NULL && strlen(message) > 0) {
 		fprintf(stderr, "Failure: %s\n", message);

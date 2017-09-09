@@ -1,3 +1,9 @@
+/**
+ * @file shared.h
+ * @author Marek Felsoci
+ * @brief Defines useful constants, data types, structures and functions usable across the application.
+ * @version 1.0
+ **/ 
 #ifndef __SHARED_H
 #define __SHARED_H
 
@@ -6,6 +12,7 @@
 #include <string.h>
 #include <limits.h>
 
+// Constants definitions
 #define SQL_IDENTIFIER_NAME_MAX_LENGTH 64
 #define DEFAULT_STRUCTURE_DEPTH 3
 #define DEFAULT_MINIMUM_NODES_PER_LEVEL 1
@@ -15,11 +22,13 @@
 #define DEFAULT_RIGHT_BOUND_COLUMN_NAME "right"
 #define DEFAULT_LEVEL_COLUMN_NAME "level"
 
+// Boolean data type definition
 typedef enum {
 	False,
 	True
 } Bool;
 
+// Export paramters data structure
 struct s_sqlparams {
 	char * table;
 	char * left_bound_column;
