@@ -43,7 +43,7 @@ The application defaults are set to following values:
 
 The above parameters can be modified by using available options:
 
-| Option | Descirption |
+| Option | Description |
 | ------ | ----------- |
 | -o | specifies output script file *(mandatory)* |
 | -d | depth of data structure *(number of levels)*
