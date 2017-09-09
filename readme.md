@@ -95,7 +95,7 @@ INSERT INTO mock_table (`left`, `right`, `level`) VALUES (107, 116, 2);
 
 ## License
 
-**Lorem Nested Set** is licensed under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+**Lorem Nested Set** is licensed under the terms of the [MIT License](LICENSE).
 
 ## Credits
 
