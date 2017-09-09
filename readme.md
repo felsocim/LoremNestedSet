@@ -30,9 +30,7 @@ Once the GCC compiler installed, you can build an executable using ``make`` comm
 
 To run Lorem Nested Set from the command line use the following sytax:
 
-```bash
-lnt -o "<output SQL script file>" [-d, -m, -M, -t, -l, -r, -v, -L, -h]
-```
+``lnt -o "<output SQL script file>" [-d, -m, -M, -t, -l, -r, -v, -L, -h]``
 	
 The application defaults are set to following values:
 * structure depth:					3 levels
