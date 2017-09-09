@@ -17,7 +17,7 @@ Node * new_node() {
 	return NULL;
 }	
 
-Node * append_child(unsigned int level, Node * parent, Node * tree) {	
+Node * append_child(unsigned short int level, Node * parent, Node * tree) {	
 	if(tree == NULL || parent == NULL) {
 		Node * created = new_node();
 		created->level = level;	
