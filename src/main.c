@@ -34,32 +34,38 @@ int main(int argc, char ** argv) {
 				if(strlen(optarg) <= SQL_IDENTIFIER_NAME_MAX_LENGTH) {
 					strcpy(params.table, optarg);
 				} else {
-					die("Argument parsing failed: Table name must not exceed 64 characters!");
+					die("Argument parsing failed (table name must not exceed 64 characters)!");
 				}
 				break;
 			case 'l':
 				if(strlen(optarg) <= SQL_IDENTIFIER_NAME_MAX_LENGTH) {
 					strcpy(params.left_bound_column, optarg);
 				} else {
-					die("Argument parsing failed: Left bound column name must not exceed 64 characters!");
+					die("Argument parsing failed (left bound column name must not exceed 64 characters)!");
 				}
 				break;
 			case 'r':
 				if(strlen(optarg) <= SQL_IDENTIFIER_NAME_MAX_LENGTH) {
 					strcpy(params.right_bound_column, optarg);
 				} else {
-					die("Argument parsing failed: Right bound column name must not exceed 64 characters!");
+					die("Argument parsing failed (right bound column name must not exceed 64 characters)!");
 				}
 				break;
 			case 'v':
+				if(params.export_level_column) {
+					die("Argument parsing failed (-v option can not be used together with -L option)!");
+				}
 				params.export_level_column = True;
 				break;
 			case 'L':
+				if(params.export_level_column) {
+					die("Argument parsing failed (-L option can not be used together with -v option)!");
+				}
 				if(strlen(optarg) <= SQL_IDENTIFIER_NAME_MAX_LENGTH) {
 					strcpy(params.level_column, optarg);
 					params.export_level_column = True;
 				} else {
-					die("Argument parsing failed: Level column name must not exceed 64 characters!");
+					die("Argument parsing failed (level column name must not exceed 64 characters)!");
 				}
 				break;
 			case 'o':
@@ -67,11 +73,11 @@ int main(int argc, char ** argv) {
 					strcpy(params.output_file, optarg);
 					output_file_set = True;
 				} else {
-					die("Argument parsing failed: Output file name exceeds maximum length allowed by your operating system and/or file system!");
+					die("Argument parsing failed (output file name exceeds maximum length allowed by your operating system and/or file system)!");
 				}
 				break;
 			case 'h':
-				printf("Usage: lnt -o OUTPUT [-d, -m, -M, -t, -l, -r, -v, -L, -h]\n");
+				printf("Usage: lnt -o <output script> [-d, -m, -M, -t, -l, -r, -v, -L, -h]\n");
 				printf("Allows to build a mock nested tree data strcture for database testing purposes.\nExports the resulting structure into a SQL script containing necessary insert statements.\n\n");
 				printf("Mandatory option:\n  -o\tspecifies output script file\n");
 				printf("Other options:\n");
@@ -89,7 +95,7 @@ int main(int argc, char ** argv) {
 				exit(0);
 				break;				
 			case '?':
-				die("Argument(s) mismatch!\nUsage: lnt -o OUTPUT [-d, -m, -M, -t, -l, -r, -v, -L, -h]\nUse -h option to display help.");
+				die("Argument(s) mismatch!\nUse -h option to display help.");
 				break;
 			default:
 				exit(0);
@@ -97,7 +103,7 @@ int main(int argc, char ** argv) {
 	}
 	
 	if(!output_file_set) {
-		die("Failure: No output file specified!");
+		die("No output file specified!");
 	}
 	
 	printf(" _                              _   _           _           _  _____      _   \n");
