@@ -99,7 +99,7 @@ int main(int argc, char ** argv) {
 				printf("  -v\texport also level column with its default name (not associable with -L option)\n");
 				printf("  -L\tcustom name (without quotes or `) for level column (not associable with -v option)\n");
 				printf("  -h\tdisplays this text\n\n");
-				printf("Full documentation and application information can be found at: https://github.com/felsocim/LoremNestedTree\nLicensed under the terms of MIT software license: https://opensource.org/licenses/MIT\n");
+				printf("Full documentation and application information can be found at: https://github.com/felsocim/LoremNestedSet\nLicensed under the terms of MIT software license: https://github.com/felsocim/LoremNestedSet/blob/master/LICENSE/licenses/MIT\n");
 				printf("Copyright (c) 2017 Marek Felsoci\n");
 				exit(0);
 				break;				
@@ -122,7 +122,7 @@ int main(int argc, char ** argv) {
 	printf("| |___| (_) | | |  __/ | | | | | |\\  |  __/\\__ \\ ||  __/ (_| |____) |  __/ |_ \n");
 	printf("|______\\___/|_|  \\___|_| |_| |_|_| \\_|\\___||___/\\__\\___|\\__,_|_____/ \\___|\\__|\n");
 	
-	printf("Version: 1.0\nDeveloped by: Marek Felsoci\nFor more information and updates, please, visit: https://github.com/felsocim/LoremNestedTree\nTo display help, run with -h option.\n\n");
+	printf("Version: 1.0\nDeveloped by: Marek Felsoci\nFor more information and updates, please, visit: https://github.com/felsocim/LoremNestedSet\nTo display help, run with -h option.\n\n");
 	
 	printf("\nP a r a m e t e r s:\n");
 	printf("Structure depth: %d levels\n", max_level);
